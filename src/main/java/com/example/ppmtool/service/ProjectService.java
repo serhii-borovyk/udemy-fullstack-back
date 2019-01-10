@@ -10,4 +10,6 @@ public interface ProjectService {
     Project findProjectByIdentifier(String projectId);
 
     List<Project> findAllProjects();
+
+    void deleteProjectByIdentifier(String projectId);
 }

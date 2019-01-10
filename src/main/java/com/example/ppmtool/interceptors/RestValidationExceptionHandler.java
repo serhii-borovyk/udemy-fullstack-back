@@ -1,7 +1,7 @@
 package com.example.ppmtool.interceptors;
 
 import com.example.ppmtool.exceptions.ProjectIdException;
-import com.example.ppmtool.exceptions.ProjectIdExceptionResponse;
+import com.example.ppmtool.exceptions.ProjectIdResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class RestValidationExceptionHandler extends ResponseEntityExceptionHandl
 
     @ExceptionHandler
     protected ResponseEntity<Object> handleProjectIdException(ProjectIdException ex, WebRequest request) {
-        ProjectIdExceptionResponse exceptionResponse = new ProjectIdExceptionResponse(ex.getMessage());
+        ProjectIdResponse exceptionResponse = new ProjectIdResponse(ex.getMessage());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 

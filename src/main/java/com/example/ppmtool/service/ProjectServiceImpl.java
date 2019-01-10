@@ -30,7 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Project findProjectByIdentifier(String projectId) {
         Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
         if (project == null) {
-            throw new ProjectIdException("Project ID '" + projectId + "' is not exists");
+            throw new ProjectIdException("Project ID '" + projectId + "' does not exists");
         }
         return project;
     }
@@ -38,5 +38,14 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> findAllProjects(){
         return projectRepository.findAll();
+    }
+
+    @Override
+    public void deleteProjectByIdentifier(String projectId){
+        Project project = projectRepository.findByProjectIdentifier(projectId.toUpperCase());
+        if (project == null) {
+            throw new ProjectIdException("Project ID '" + projectId + "' does not exists");
+        }
+        projectRepository.delete(project);
     }
 }
