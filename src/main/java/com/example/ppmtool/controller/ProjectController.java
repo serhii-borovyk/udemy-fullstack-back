@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/project")
@@ -26,6 +27,12 @@ public class ProjectController {
     public ResponseEntity<?> getProjectById(@PathVariable String projectId) {
         Project project = projectService.findProjectByIdentifier(projectId);
         return new ResponseEntity<>(project, HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllProjects() {
+        List<Project> allProjects = projectService.findAllProjects();
+        return new ResponseEntity<>(allProjects, HttpStatus.OK);
     }
 
 }

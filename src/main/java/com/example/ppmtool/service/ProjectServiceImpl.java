@@ -6,6 +6,7 @@ import com.example.ppmtool.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -32,5 +33,10 @@ public class ProjectServiceImpl implements ProjectService {
             throw new ProjectIdException("Project ID '" + projectId + "' is not exists");
         }
         return project;
+    }
+
+    @Override
+    public List<Project> findAllProjects(){
+        return projectRepository.findAll();
     }
 }
