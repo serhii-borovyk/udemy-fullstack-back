@@ -27,7 +27,7 @@ public class RestValidationExceptionHandler extends ResponseEntityExceptionHandl
     @SuppressWarnings({"Convert2MethodRef", "ConstantConditions"})
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         Map<String, String> errorMessages = ex.getBindingResult().getFieldErrors().stream().
-                collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage()));
+                collect(Collectors.toMap(e -> e.getField(), e -> e.getDefaultMessage(), (e1, e2) -> e2));
 
         return new ResponseEntity<>(errorMessages, HttpStatus.BAD_REQUEST);
     }
