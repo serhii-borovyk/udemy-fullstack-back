@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -29,11 +30,11 @@ public class Project {
     @NotBlank(message = "Project description is required")
     private String description;
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
-    private LocalDateTime startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
 
-    @JsonFormat(pattern = "yyyy-mm-dd")
-    private LocalDateTime endDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
     @CreationTimestamp
